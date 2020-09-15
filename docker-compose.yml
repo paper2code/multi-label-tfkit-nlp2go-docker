@@ -1,0 +1,36 @@
+---
+version: '3.8'
+services:
+
+  api:
+   image: paper2code/tfkit-pwc-nlp2go:latest
+   container_name: ${NAMESPACE}-api
+   build:
+     context: .
+     dockerfile: Dockerfile.api
+   ports:
+   - 5017:5017
+   volumes:
+   - tfkit-data:/opt/tfkit-pwc/data
+   command: ["--port", "5017", "--model", "/opt/tfkit-pwc/tfkit-pwc.model"]
+
+  train:
+   image: paper2code/tkfit-pwc-train:cpu-latest
+   container_name: ${NAMESPACE}-train
+   build:
+     context: .
+     dockerfile: Dockerfile
+   volumes:
+   - tfkit-data:/opt/tfkit-pwc/data
+
+  train-gpu:
+   image: paper2code/tkfit-pwc-train:gpu-latest
+   container_name: ${NAMESPACE}-train-gpu
+   build:
+     context: .
+     dockerfile: Dockerfile.gpu
+   volumes:
+   - tfkit-data:/opt/tfkit-pwc/data
+
+volumes:
+  tfkit-data:
