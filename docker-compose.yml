@@ -34,3 +34,7 @@ services:
 
 volumes:
   tfkit-data:
+    driver_opts:
+      type: none
+      o: bind
+      device: ${PWD}/shared/data

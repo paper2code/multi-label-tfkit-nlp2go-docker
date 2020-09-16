@@ -1,3 +1,3 @@
-# multilabel-tfkit-nlp2go-docker
+# multi-label-tfkit-nlp2go-docker
 
-multilabel-tfkit-nlp2go-docker
+multi-label-tfkit-nlp2go-docker
